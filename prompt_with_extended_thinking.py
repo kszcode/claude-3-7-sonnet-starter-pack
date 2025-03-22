@@ -5,6 +5,7 @@
 #   "anthropic>=0.45.2",
 #   "argparse>=1.4.0",
 #   "rich>=13.7.0",
+#   "python-dotenv>=1.0.0",
 # ]
 # ///
 
@@ -15,7 +16,12 @@ This script demonstrates basic extended thinking capabilities of Claude 3.7 Sonn
 It allows you to set a thinking budget to improve Claude's reasoning on complex tasks.
 
 Usage:
-    uv run prompt_with_extended_thinking.py --prompt "Explain quantum computing to me" --max_tokens 2048 --thinking_budget_tokens 1024
+
+    uv run prompt_with_extended_thinking.py \
+        --prompt "How to setup pycharm to support uv runners instead of virtual-env?" \
+        --max_tokens 2048 \
+        --thinking_budget_tokens 1024
+
 """
 
 import os
@@ -28,7 +34,10 @@ from rich.panel import Panel
 from rich.syntax import Syntax
 from rich.table import Table
 from rich.progress import Progress, SpinnerColumn, TextColumn
+from dotenv import load_dotenv
 
+# Load variables from .env file
+load_dotenv()
 
 def main():
     # Initialize rich console
